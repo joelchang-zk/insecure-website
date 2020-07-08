@@ -12,11 +12,10 @@ import psycopg2
 
 def setUpDB():
   up.uses_netloc.append("postgres")
-  url = up.urlparse(os.environ["postgres://hrtaronw:nAzNly4037pRe5h5ercGQYap2wNOah79@ruby.db.elephantsql.com:5432/hrtaronw"])
-  conn = psycopg2.connect(database=url.path[1:],
-  user=url.username,
-  password=url.password,
-  host=url.hostname,
-  port=url.port
+  conn = psycopg2.connect(database='hrtaronw',
+  user='hrtaronw'
+  password='nAzNly4037pRe5h5ercGQYap2wNOah79',
+  host='ruby.db.elephantsql.com',
+  port='5432'
   )
   return conn
