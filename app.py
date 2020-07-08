@@ -1,4 +1,13 @@
-from __init__ import app
+from flask import Flask
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '\xd2\x04S4\xbc\xce\xe2\x17\xfb\xff\x19C@\xa6e\xc2\xf4\x18\xad\xe8\xc4\xcb'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+
+app.routes('/', methods = ['GET','POST'])
+def index():
+    return ('Hello World!')
 
 if __name__ == '__main__':
     app.run(debug=False, port=5300)
