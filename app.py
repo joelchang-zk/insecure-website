@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from insecure-website.helper.setup import setUpDB
+from helper.setup import setUpDB
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '\xd2\x04S4\xbc\xce\xe2\x17\xfb\xff\x19C@\xa6e\xc2\xf4\x18\xad\xe8\xc4\xcb'
