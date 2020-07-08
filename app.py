@@ -5,7 +5,7 @@ app.config['SECRET_KEY'] = '\xd2\x04S4\xbc\xce\xe2\x17\xfb\xff\x19C@\xa6e\xc2\xf
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
-app.routes('/', methods = ['GET','POST'])
+app.route('/', methods = ['GET','POST'])
 def index():
     return ('Hello World!')
 
