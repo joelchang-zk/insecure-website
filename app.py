@@ -6,6 +6,8 @@ app.config['SECRET_KEY'] = '\xd2\x04S4\xbc\xce\xe2\x17\xfb\xff\x19C@\xa6e\xc2\xf
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
+connection = setupDB()
+print("DB SET UP")
 @app.route('/')
 def index():
     return "<h1>Welcome to our server !!</h1>"
