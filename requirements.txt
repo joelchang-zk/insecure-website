@@ -1,0 +1,4 @@
+hashlib
+Flask
+psycopg2
+jsonlib
