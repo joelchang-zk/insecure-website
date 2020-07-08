@@ -1,5 +1,6 @@
 import psycopg2
 
 def setUpDB():
-    connection = psycopg2.connect(user="postgres", password="Jczk1241", host="localhost", port="5432", database="postgres")
+    DATABASE_URL = os.environ['DATABASE_URL']
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
     return connection
