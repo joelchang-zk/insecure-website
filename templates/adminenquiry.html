@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href = "static/styles.css">
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="w3-bar w3-black w3-hide-small">
+        <div class="w3-dropdown-hover w3-hide-small w3-right">
+            <button class="w3-button" title="Notifications">Account<i class="fa fa-caret-down"></i></button>     
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                <a href="{{ url_for('common.profile', username = username) }}" class="w3-bar-item w3-button">Profile</a>
+                <a href = "{{ url_for('common.changePassword', username = username) }}" class = "w3-bar-item w3-button">Change Password</a>
+                <a href="{{ url_for('common.logout', username = username, role = role) }}" class="w3-bar-item w3-button">Logout</a>
+            </div>
+        </div>
+        <a href = "{{ url_for('admin.adminRequests', username = username) }}" class = "w3-bar w3-bar-item w3-button w3-right">Requests</a>
+        <a href = "{{ url_for('admin.adminHomePage', username = username) }}" class = "w3-bar w3-bar-item w3-button w3-right">Users</a>
+        <a href = "{{ url_for('admin.adminEnquiry', username = username ) }}" class = "w3-bar w3-bar-item w3-button w3-right">Enquiries</a>
+    </div>
+    {% if isEmpty %}
+        <div class="card bg-light text-dark" style="width:60%; margin-left:20%; margin-top:10%">
+            <div class="card-body" style="text-align: center; font-size:50px">There are currently no pending enquiries</div>
+        </div>
+    {% else %}
+        <table class = "table table-bordered" style = "width:90%; margin:auto; margin-top:2%">
+            <tr>
+                <th scope = "col">Name </th>
+                <th scope = "col">Email</th>
+                <th scope = "col">Enquiry</th>
+                <th scope = "col">Date and Time</th>
+                <th scope = "col">Actions</th>
+            </tr>
+        {% for x in results %}
+            <tr>
+                <th scope = "col"> {{ x[0] }} </th>
+                <th scope = "col"> {{ x[1] }} </th>
+                <th scope = "col"> {{ x[2] }} </th>
+                <th scope = "col"> {{ x[3] }} </th>
+                <th scope = "col">
+                    <a href = "{{ url_for('admin.resolveEnquiry', username = username, enquiryid = x[4]) }}" class = "btn bootpopout">Resolve Enquiry</a>
+                </th>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

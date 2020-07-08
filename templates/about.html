@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href = "static/styles.css">
+    <title>About Us</title>
+</head>
+<style>
+	body, html {
+		width: 100%;
+		height: 100%;
+	}
+	.bg {
+		background: url("static/images/box-img2.JPG");
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: cover;
+	}
+</style>
+<body class = "bg">
+    <div class="w3-bar w3-black w3-hide-small">
+        <div style = "margin-right:3%">
+            <a href = "{{ url_for('general.index') }}" class = "w3-bar w3-bar-item w3-button w3-left">Home</a>
+            <div class="w3-dropdown-hover w3-hide-small w3-right">
+                <button class="w3-button" title="Notifications">Login<i class="fa fa-caret-down"></i></button>     
+                <div class="w3-dropdown-content w3-card-10 w3-bar-block">
+                    <a href="{{ url_for('general.doctorLogin') }}" class="w3-bar-item w3-button">Doctor</a>
+                    <a href = "{{ url_for('general.patientLogin') }}" class = "w3-bar-item w3-button">Patient</a>
+                    <a href="{{ url_for('general.labTechLogin') }}" class="w3-bar-item w3-button">Lab Tech</a>
+                </div>
+            </div>
+            <a href = "{{ url_for('general.generalEnquiries') }}" class = "w3-bar w3-bar-item w3-button w3-right">General Enquiries</a>
+            <a href = "{{ url_for('general.doctorsList') }}" class = "w3-bar w3-bar-item w3-button w3-right">Our Doctors</a>
+            <a href = "{{ url_for('general.contact') }}" class = "w3-bar w3-bar-item w3-button w3-right">Contact us</a>
+            <a href = "{{ url_for('general.about') }}" class = "w3-bar w3-bar-item w3-button w3-right">About Us</a>
+        </div>
+	</div>
+    <div class="col-sm-offset-1">
+        <div class = "panel-group" style = "width:40%; text-align: center;">
+            <div class = "panel panel-info" style = "margin-top:5%">
+                <div class = "panel-heading">Our Mission</div>
+                <div class = "panel-body">
+                    <h1><b>Leading Change. Enpowering Individuals</b></h1>
+                    <h3>We strive to provide affordable medical services for everyone and uphold the highest possible standards in the medical profession</h3>
+                </div>
+            </div>
+            <div class = "panel panel-info" style = "margin-top:5%">
+                <div class = "panel-heading">Our Vision</div>
+                <div class = "panel-body">
+                    <h1><b>Your health, Our responsibility</b></h1>
+                    <h3>NUSMed strives to nurture the next generation of healthcare laeder and seeks to spearhead the next breakthrough in medical technology. We also aim to enpower each and every individual to be responsible for their personal health</h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

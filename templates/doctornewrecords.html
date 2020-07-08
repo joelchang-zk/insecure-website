@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href = "static/styles.css">
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="w3-bar w3-black w3-hide-small">
+        <div class="w3-dropdown-hover w3-hide-small w3-right">
+            <button class="w3-button" title="Notifications">Account<i class="fa fa-caret-down"></i></button>     
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                <a href="{{ url_for('common.profile', username = username) }}" class="w3-bar-item w3-button">Profile</a>
+                <a href = "{{ url_for('common.changePassword', username = username) }}" class = "w3-bar-item w3-button">Change Password</a>
+                <a href="{{ url_for('common.logout', username = username) }}" class="w3-bar-item w3-button">Logout</a>
+            </div>
+        </div>
+        <a href = "{{ url_for('doctor.doctorHomePage', username = username) }}" class = "w3-bar w3-bar-item w3-button w3-right">Records</a>
+        <a href = "{{ url_for('doctor.doctorViewAppt', username = username) }}" class = "w3-bar w3-bar-item w3-button w3-right">View Appt</a>
+        <a href = "{{ url_for('doctor.doctorCheckAppt', username = username) }}" class = "w3-bar w3-bar-item w3-button w3-right">Check Appt</a>
+    </div>
+    {% if errorMessage %}
+    <div class="alert alert-danger"> {{ errorMessage }} </div>
+    {% elif successMessage %}
+    <div class = "alert alert-success"> {{ successMessage }}</div>
+    {% endif %}
+    <form action = "" method = 'POST'>
+        <div class="card bg-light text-dark" style="width:60%; margin-left:20%; margin-top:3%">
+            <div class="card-body">
+                <div class = "form-inline">
+                    <label for = "patientName" style = "margin-left: 2%">Patient Name: </label>
+                    <input type = "name" id = "patientName" name = "patientName" class = "form-control" style = "width: 70%; margin-left:2%">
+                </div>
+                <div class = "form-inline" style = "margin-top: 3%">
+                    <label for = "patientWeight" style = "margin-left: 8%;">Weight:</label>
+                    <input type = "weight" id = "patientWeight" name = "patientWeight" class = "form-control" style = "margin-left:4%; width:27%" pattern="[0-9]{1,20}">
+                    <label for = "patientHeight" style = "margin-left:4%">Height:</label>
+                    <input type = "height" id = "patientHeight" name = "patientHeight" class = "form-control" style = "margin-left:3%; width:27%" pattern="[0-9]{1,20}">
+                </div>
+                <div class = "form-inline" style = "margin-top: 3%">
+                    <label for = "patientBP">Blood Pressure:</label>
+                    <input type = "bp" id = "patientBP" name = "patientBP" class = "form-control" style = "width: 27%; margin-left:2.5%" pattern="[0-9]{1,20}">
+                    <label for = "patientTemp" style = "margin-left:4%">Temp:</label>
+                    <input type = "temp" id = "patientTemp" name = "patientTemp" class = "form-control" style = "width: 27%; margin-left: 4%" pattern="[0-9]{1,20}">
+                </div>
+                <div class = "form-inline" style = "margin-top:3%">
+                    <label for = "patientCondition" style = "margin-left:4%">Condition: </label>
+                    <textarea class = "form-control" id = "patientCondition" name = "patientCondition" rows = "2" cols = "50" style = "margin-left:5%; width:69%"></textarea>
+                </div>
+                <div class = "form-inline" style = "margin-top:3%">
+                    <label for = "patientDiagnosis" style = "margin-left:3%">Diagnosis: </label>
+                    <textarea class = "form-control" id = "patientDiagnosis" name = "patientDiagnosis" rows = "6" cols= "50" style = "margin-left:5.5%;width: 69%"></textarea>
+                </div>
+                <div class = "form-inline" style = "margin-top:3%">
+                    <label for = "follow-up" style = "margin-left:3%">Follow-up: </label>
+                    <textarea class = "form-control" id = "follow-up" name = "follow-up" rows = "6" cols= "50" style = "margin-left:5.5%;width: 69%"></textarea>
+                </div>
+                <button type = "submit" class = "btn btn-success" name = "submit" id = "submit" style = "text-align: center; margin-left: 30%; margin-top: 3%;">Submit</button>
+                <a href = "" class = "btn btn-danger" name = "cancel" id = "cancel" style = "margin-top:3%; margin-left:20%">Cancel</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

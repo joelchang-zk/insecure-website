@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href = "static/styles.css">
+        <title>Login</title>
+    </head>
+    <style>
+        .bg {
+            background: url("/static/images/login.jpg");
+            /* width: 100%; */
+            /* height: 100%; */
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+        }
+    </style>
+    <body class = "bg">
+        <div class="w3-bar w3-black w3-hide-small">
+            <div style = "margin-right:3%">
+                <a href = "{{ url_for('general.index') }}" class = "w3-bar w3-bar-item w3-button w3-left">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small w3-right">
+                    <button class="w3-button" title="Notifications">Login<i class="fa fa-caret-down"></i></button>     
+                    <div class="w3-dropdown-content w3-card-10 w3-bar-block">
+                        <a href="{{ url_for('general.doctorLogin') }}" class="w3-bar-item w3-button">Doctor</a>
+                        <a href = "{{ url_for('general.patientLogin') }}" class = "w3-bar-item w3-button">Patient</a>
+                        <a href="{{ url_for('general.labTechLogin') }}" class="w3-bar-item w3-button">Lab Tech</a>
+                    </div>
+                </div>
+                <a href = "{{ url_for('general.generalEnquiries') }}" class = "w3-bar w3-bar-item w3-button w3-right">General Enquiries</a>
+                <a href = "{{ url_for('general.doctorsList') }}" class = "w3-bar w3-bar-item w3-button w3-right">Our Doctors</a>
+                <a href = "{{ url_for('general.contact') }}" class = "w3-bar w3-bar-item w3-button w3-right">Contact us</a>
+                <a href = "{{ url_for('general.about') }}" class = "w3-bar w3-bar-item w3-button w3-right">About Us</a>
+            </div>
+        </div>
+        <div class = "panel panel-info h-60 align-items-center" style = "width:50%;margin-left:25%; margin-top:10%">
+            <div class = "panel-heading">Login</div>
+            <div body = "panel-body">
+                <form action = "" method = 'POST'>
+                    <div class = "form-inline">
+                        <label for = "inputUsername" style = "margin-top:5%; margin-left:10%">Username:</label>
+                        <input type = "username" id = "username" name = "username" class = "form-control" placeholder = "Enter your username" style = "width:65%; margin-left:3%; margin-top:5%">
+                    </div>
+                    <div class = "form-inline" style = "margin-top:3%; margin-left:11%">
+                        <lable for = "inputPassword">Password:</lable>
+                        <input type = "password" id = "password" name = "password" class = "form-control" placeholder = "Enter your password" style = "width:72%; margin-left: 4%">
+                    </div>
+                    {% if error %}
+                    <p class = "alert alert-danger" style = "width:79%; margin-top:3%; margin-left:10%"> {{ error }} </p>
+                    {% endif %}
+                    <div style = "margin-top:3%; margin-left:40%; margin-top:2%">
+                        <button type = "submit" class = "btn btn-success" name = "submit" id = "submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style = "position: absolute; bottom:0; right:0">
+            <a href="https://pngtree.com/free-backgrounds" style = "color:black">free background photos from pngtree.com</a>
+        </div>
+    </body>
+</html>
